@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+
+@layer base {
+  * {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+@layer components {
+
+  /* Navegación */
+  .nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: currentColor;
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    width: 100%;
+  }
+
+  /* Capa oscura del Hero */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(225, 225, 255, 0.1);
+}
+
+  /* Tarjetas de proyecto */
+  .project-card {
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.05);
+  }
+
+  .project-card-image {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card-image::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+  }
+
+  .project-card:hover .project-card-image::before {
+    opacity: 1;
+  }
+
+  .project-card img {
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: grayscale(0.2) brightness(0.95);
+  }
+
+  .project-card:hover img {
+    transform: scale(1.1);
+    filter: grayscale(0) brightness(1);
+  }
+
+  /* Tech badges */
+  .tech-badge {
+    transition: all 0.3s ease;
+  }
+
+  .tech-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+
+  /* Animaciones de entrada */
+  .fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .delay-100 { animation-delay: 0.1s; opacity: 0; }
+  .delay-200 { animation-delay: 0.2s; opacity: 0; }
+  .delay-300 { animation-delay: 0.3s; opacity: 0; }
+  .delay-400 { animation-delay: 0.4s; opacity: 0; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
